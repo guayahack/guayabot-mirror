@@ -1,10 +1,22 @@
 import discord
 import responses
 
+# async def send_message(message, user_message, is_private):
+#     try:
+#         response = responses.handle_response(user_message)
+#         await message.author.send(response) if is_private else await message.channel.send(response)
+#     except Exception as e:
+#         print(e)
 async def send_message(message, user_message, is_private):
     try:
         response = responses.handle_response(user_message)
-        await message.author.send(response) if is_private else await message.channel.send(response)
+        
+        # Check if response is not empty
+        if response:
+            if is_private:
+                await message.author.send(response)
+            else:
+                await message.channel.send(response)
     except Exception as e:
         print(e)
 
