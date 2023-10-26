@@ -34,21 +34,33 @@ With GuayaBot at your service, the traditional barriers between GitLab and Disco
 - Efficient Collaboration: Collaborate effectively by discussing code changes, resolving issues, and providing feedback—all within your Discord environment. GuayaBot ensures that discussions remain organized and contextually relevant.
 
 - User-friendly Setup: Integrating GuayaBot into your Discord server is a breeze. A simple configuration process allows you to connect your GitLab account, specify project repositories, and customize bot behavior to suit your team's needs.
+
 ## How does it work?
 
-TODO
+GuayaBot operates by listening to messages on your Discord server. When it detects a command prefixed by `!`, like `!quote`, it responds with the corresponding output. It currently provides a set of quotes to select from randomly, but its capabilities can be extended based on user needs.
 
 ## Requirements
 
-TODO
+Ensure you have `discord.py==2.3.2` installed. You can install this using the requirements.txt file provided in the project repository.
 
 ## Setup
 
-TODO
+1. Clone the repository.
+2. Navigate to the project directory.
+3. Install the required dependencies:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+  
+4. Insert bot token in a file named `token.txt`. 
+5. Run `main.py` to start the bot.
 
 ## Use
 
-TODO
+To use the bot, simply type the commands in your Discord chat. For example:
+
+- `!quote` : GuayaBot will respond with a random quote from the GuayaHack community.
 
 ## Contribution
 
