@@ -15,7 +15,6 @@ def read_yaml_quotes(yaml_file:str) -> list:
     contains two elements: the author's name and their corresponding quote.
     """
     quote_list = []
-    
     with open(yaml_file, 'r') as file:
         data = safe_load(file)
         
@@ -40,7 +39,6 @@ def add_quote(quote_list:list, yaml_file:str) -> None:
     """
     
     author, quote = quote_list
-
     with open(yaml_file, 'r') as file:
         data = safe_load(file)
 
