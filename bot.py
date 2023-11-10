@@ -1,5 +1,5 @@
 from discord import Intents, Client
-import responses
+import responses, logging
 
 async def send_message(message, user_message, is_private):
     try:
@@ -11,8 +11,8 @@ async def send_message(message, user_message, is_private):
                 await message.author.send(response)
             else:
                 await message.channel.send(response)
-    except Exception as e:
-        print(e)
+    except Exception:
+        logging.exception("Exception in bot(): ")
 
 def run_discord_bot():
     with open("token.txt", "r") as f: # Lee el token del archivo token.txt y lo guarda en la variable TOKEN
@@ -24,7 +24,7 @@ def run_discord_bot():
 
     @client.event
     async def on_ready():
-        print(f'{client.user} is now running!')
+        logging.info("{client_user} is now running!")
 
     @client.event
     async def on_message(message):
