@@ -1,10 +1,10 @@
 # GuayaBot
 
-Introducing GuayaBot: Your Ultimate GitLab-Discord Assistant! Streamline and simplify your GitLab project management through seamless integration with Discord. Experience unparalleled ease as GuayaBot empowers you to effortlessly oversee GitLab tasks, updates, and collaboration—all from the comfort of your Discord chats.
+Introducing GuayaBot: an interactive Discord bot crafted by and for the [GuayaHack](guayahack.co) community.
 
 ## Table of Contents
 
-  - [GuayaBot](#GuayaBot)
+- [GuayaBot](#guayabot)
   - [Table of Contents](#table-of-contents)
   - [Description](#description)
   - [How does it work?](#how-does-it-work)
@@ -12,28 +12,10 @@ Introducing GuayaBot: Your Ultimate GitLab-Discord Assistant! Streamline and sim
   - [Setup](#setup)
   - [Use](#use)
   - [Contribution](#contribution)
-  - [License](#License)
+  - [License](#license)
 
 ## Description
-GuayaBot: Elevating Collaboration and Efficiency in GitLab Project Management via Discord Integration
-
-In the dynamic world of software development, effective project management and seamless communication are paramount. Enter GuayaBot, an innovative Discord bot meticulously designed to revolutionize the way teams interact with and manage GitLab projects.
-
-With GuayaBot at your service, the traditional barriers between GitLab and Discord fade away, ushering in a new era of streamlined collaboration. This cutting-edge bot serves as a powerful bridge, enabling developers, project managers, and teams to effortlessly interact with their GitLab repositories, issues, merge requests, and more—all from the familiar environment of Discord chats.
-
-### Key Features:
-
-- Real-time Updates: Stay in the loop with your GitLab projects without ever leaving your Discord server. GuayaBot keeps you informed about important events, updates, and notifications, ensuring you're always up-to-date with the latest project developments.
-
-- Effortless Task Management: With GuayaBot, you can create, assign, and track GitLab issues and merge requests directly from Discord. No need to switch between platforms; manage your tasks seamlessly in the channel where your team collaborates.
-
-- Interactive Commands: GuayaBot understands your commands and queries, providing instant information about GitLab repositories, pipelines, and project statistics. Whether you're checking the status of a build or reviewing project analytics, GuayaBot has you covered.
-
-- Customizable Notifications: Tailor your notification preferences to receive alerts about specific events, such as code commits, merge request approvals, and pipeline results. Stay informed, stay focused.
-
-- Efficient Collaboration: Collaborate effectively by discussing code changes, resolving issues, and providing feedback—all within your Discord environment. GuayaBot ensures that discussions remain organized and contextually relevant.
-
-- User-friendly Setup: Integrating GuayaBot into your Discord server is a breeze. A simple configuration process allows you to connect your GitLab account, specify project repositories, and customize bot behavior to suit your team's needs.
+GuayaBot is a Discord chat bot designed to suit the necessities and ideas of [GuayaHack](https://guayahack.co). From a simple quotes bot to greater things, imagination is the limit.
 
 ## How does it work?
 
@@ -41,26 +23,30 @@ GuayaBot operates by listening to messages on your Discord server. When it detec
 
 ## Requirements
 
-Ensure you have `discord.py==2.3.2` installed. You can install this using the requirements.txt file provided in the project repository.
+- docker
 
 ## Setup
+For convenience, we have implemented a Dockerfile for this project. Follow these steps to set up the bot:
 
-1. Clone the repository.
-2. Navigate to the project directory.
-3. Install the required dependencies:
-
-    ```bash
-    pip install -r requirements.txt
-    ```
-  
-4. Insert bot token in a file named `token.txt`. 
-5. Run `main.py` to start the bot.
-
+1. Create a `.env` file in the project root.
+2. Add the following line to the `.env` file, replacing `tokenForDiscord` with your actual Discord token:
+   ```plaintext
+   TOKEN=tokenForDiscord
+   ```
+3. Run the following command to build the Docker image for the bot:
+   ```bash
+   $ docker build -t guayabot:latest .docker build -t guayabot:latest .
+   ```
+4. Finally, run the container:
+   ```bash
+   $ docker run -d guayabot
+   ```
 ## Use
 
 To use the bot, simply type the commands in your Discord chat. For example:
 
 - `!quote` : GuayaBot will respond with a random quote from the GuayaHack community.
+- `!addquote "quote" - Author` : Guayabot will add the quote to quotes.yaml
 
 ## Contribution
 
