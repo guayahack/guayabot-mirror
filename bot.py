@@ -1,5 +1,8 @@
-from discord import Intents, Client
-import responses, logging
+import discord, responses, os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 async def send_message(message, user_message, is_private):
     try:
@@ -15,10 +18,11 @@ async def send_message(message, user_message, is_private):
         logging.exception("Exception in bot(): ")
 
 def run_discord_bot():
-    with open("token.txt", "r") as f: # Lee el token del archivo token.txt y lo guarda en la variable TOKEN
-        TOKEN = f.read()
-    
-    intents = Intents.default()
+    # with open("token.txt", "r") as f: # Lee el token del archivo token.txt y lo guarda en la variable TOKEN
+        # TOKEN = f.read()
+    TOKEN = os.getenv("TOKEN")
+    print(TOKEN)
+    intents = discord.Intents.default()
     intents.message_content = True
     client = Client(intents=intents)
 
