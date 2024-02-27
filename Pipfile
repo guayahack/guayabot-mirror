@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 "discord.py" = "==2.3.2"
 pyyaml = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
