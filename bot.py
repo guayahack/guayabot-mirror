@@ -1,4 +1,4 @@
-import discord, responses, os
+import discord, responses, logging, os
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -21,7 +21,7 @@ def run_discord_bot():
     TOKEN = os.getenv("TOKEN")
     intents = discord.Intents.default()
     intents.message_content = True
-    client = Client(intents=intents)
+    client = discord.Client(intents=intents)
 
     @client.event
     async def on_ready():
