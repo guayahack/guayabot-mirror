@@ -2,40 +2,45 @@ import random
 import quotes
 import re
 
-def filter(message:str) -> list:
-    """
-    Filters a message to extract a command, author, and a quote.
 
-    Args:
-        message (str): The input message to be filtered.
+def filter(message: str) -> list:
+    """
+    Parses a message to extract a 'addquote' command along with the quote and its author.
+
+    This function uses a regular expression to identify messages that follow the
+    pattern of the 'addquote' command, extracting the quote and author. The expected
+    pattern is '!addquote "quote" - author'. If the message matches, it returns a list
+    containing the command, author, and quote. Otherwise, it returns the original message
+    and an empty string.
+
+    Parameters:
+        message (str): The text message to be parsed.
 
     Returns:
-        parts (list): A list containing the extracted information.
-              - If the message matches the expected pattern:
-                [command (str), author (str), quote (str)]
-              - If the message does not match the pattern:
-                [message (str), " " (str)]
-    
-    The function uses a regular expression pattern to parse the input message and extracts
-    a command, an optional author, and a quoted text. If the pattern is not matched,
-    it returns the original message with an empty string as the author.
+        list: A list with the parsed command, author, and quote if the message matches
+              the expected pattern. Returns the original message and an empty string if not.
 
     Example:
-    >>> filter('!addquote John "This is a quote."')
-    ['addquote', 'John', 'This is a quote.']
+        Input: '!addquote "This is a quote" - Author'
+        Output: ['addquote', 'Author', 'This is a quote']
 
-    >>> filter('Hello, world!')
-    ['Hello, world!', ' ']
-    """    
-    # Define the regex pattern
-    pattern = r'!(addquote|showquote)(?: (\w+))? "(.*?)"'
+        Input: 'Hello world'
+        Output: ['Hello world', '']
+    """
 
+    # Regular expression pattern to match the addquote command.
+    pattern = r'!addquote "(.*?)" - (\w+)'
+
+    # Attempt to match the pattern in the message.
     match = re.match(pattern, message)
     if match:
-        command, author, quote = match.groups()
-        return command, author, quote
+        # If matched, extract the quote and author.
+        quote, author = match.groups()
+        return ["addquote", author, quote]
     else:
-        return message, " "
+        # If no match, return the original message and an empty string.
+        return [message, ""]
+
 
 def handle_response(message) -> str:
     p_message = message.lower()
@@ -43,11 +48,11 @@ def handle_response(message) -> str:
     parts = filter(p_message)
     command = parts[0]
 
-    if command == '!quote':
+    if command == "!quote":
         quotes_list = quotes.read_yaml_quotes("quotes.yaml")
         return quotes.format_quote(random.choice(quotes_list))
 
-    if command == 'addquote':
+    if command == "addquote":
         quote_list = []
         quote_list.extend([parts[1], parts[2]])
         quotes.add_quote(quote_list, "quotes.yaml")
