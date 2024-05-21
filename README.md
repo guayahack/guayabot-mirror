@@ -15,6 +15,7 @@ Introducing GuayaBot: an interactive Discord bot crafted by and for the [GuayaHa
   - [License](#license)
 
 ## Description
+
 GuayaBot is a Discord chat bot designed to suit the necessities and ideas of [GuayaHack](https://guayahack.co). From a simple quotes bot to greater things, imagination is the limit.
 
 ## How does it work?
@@ -26,21 +27,28 @@ GuayaBot operates by listening to messages on your Discord server. When it detec
 - docker
 
 ## Setup
+
 For convenience, we have implemented a Dockerfile for this project. Follow these steps to set up the bot:
 
 1. Create a `.env` file in the project root.
 2. Add the following line to the `.env` file, replacing `tokenForDiscord` with your actual Discord token:
+
    ```plaintext
    TOKEN=tokenForDiscord
    ```
+
 3. Run the following command to build the Docker image for the bot:
+
    ```bash
-   $ docker build -t guayabot:latest .docker build -t guayabot:latest .
+   docker build -t guayabot:latest .
    ```
+
 4. Finally, run the container:
+
    ```bash
-   $ docker run -d guayabot
+   docker run -d guayabot
    ```
+
 ## Use
 
 To use the bot, simply type the commands in your Discord chat. For example:
@@ -50,8 +58,10 @@ To use the bot, simply type the commands in your Discord chat. For example:
 
 ## Contribution
 
-- The community is encouraged to contribute to the project. 
+- The community is encouraged to contribute to the project.
+
 - Contributions, whether they are bug fixes, improvements, or new features, are welcome.
+
 - All contributions will be warmly received and appropriately reviewed before being incorporated into the project.
 
 ## License
